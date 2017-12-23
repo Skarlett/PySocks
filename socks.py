@@ -203,10 +203,11 @@ def wrap_module(module):
 wrapmodule = wrap_module
 
 
-def create_connection(dest_pair, proxy_type=None, proxy_addr=None,
+def create_connection(dest_pair,
+                      timeout=None, source_address=None,
+                      proxy_type=None, proxy_addr=None,
                       proxy_port=None, proxy_rdns=True,
                       proxy_username=None, proxy_password=None,
-                      timeout=None, source_address=None,
                       socket_options=None):
     """create_connection(dest_pair, *[, timeout], **proxy_args) -> socket object
 
@@ -477,7 +478,7 @@ class socksocket(_BaseSocket):
         """
         Returns the IP and port number of the proxy.
         """
-        return super(socksocket, self).getpeername()
+        return self.getpeername()
 
     getproxypeername = get_proxy_peername
 
